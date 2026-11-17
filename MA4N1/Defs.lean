@@ -5,7 +5,9 @@ import Mathlib.Data.Set.Card
 /-!
 # Definitions
 
-Definitions required to state Sylow's Theorems
+Definitions required to state Sylow's Theorems.
+
+All definitions are specialized to finite groups.
 -/
 
 namespace Sylow
