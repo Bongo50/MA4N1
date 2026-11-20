@@ -14,62 +14,69 @@ Lemmas required to prove Sylow's Theorems.
 namespace Sylow
 assert_not_exists Sylow
 
-theorem proposition_2_18_i
+/- Proposition 2.18 i) in the MA3K4 notes-/
+theorem stabiliser_is_subgroup
     (G X : Type*) [Group G] [MulAction G X] :
     ∀ x : X, MulAction.stabilizer G x ≤ ⊤ := by
     sorry
 
-theorem proposition_2_18_ii
+/- Proposition 2.18 ii) in the MA3K4 notes-/
+theorem stabiliser_eq_ker_toPermHom
     (G X : Type*) [Group G] [MulAction G X] :
     (⨅ x: X, MulAction.stabilizer G x) = (MulAction.toPermHom G X).ker := by
     sorry
 
-
-theorem theorem_2_19
+/- Theorem 2.19 in the MA3K4 notes-/
+theorem orbit_stabiliser
     (G X : Type*) [Finite G] [Group G] [MulAction G X]
     (x : X) :
     Nat.card G = Nat.card (MulAction.orbit G x) * Nat.card (MulAction.stabilizer G x) := by
     sorry
 
-
-theorem corollary_2_22_i
+/- Corollary 2.22 i) in the MA3K4 notes-/
+theorem orbit_eq_or_disjoint
     (G X : Type*) [Finite G] [Group G] [MulAction G X]
     (x y : X) :
     (MulAction.orbit G x = MulAction.orbit G y) ∨ Disjoint (MulAction.orbit G x) (MulAction.orbit G y) := by
     sorry
 
-
-theorem corollary_2_22_ii
+/- Corollary 2.22 ii) in the MA3K4 notes-/
+theorem union_orbit_eq_group
     (G X : Type*) [Finite G] [Group G] [MulAction G X] :
     (⋃ x : X, MulAction.orbit G x) = Set.univ := by
     sorry
 
-theorem corollary_2_22_iii
+/- Corollary 2.22 iii) in the MA3K4 notes-/
+theorem card_orbit_dvd_card_group
     (G X : Type*) [Finite G] [Group G] [MulAction G X]
     (x : X) :
     Nat.card (MulAction.orbit G x) ∣ Nat.card G := by
     sorry
 
-theorem lemma_3_4_i
-    (p : Nat.Primes) :
+/- Lemma 3.4 i) in the MA3K4 notes-/
+theorem prime_dvd_choose_of_lt
+    (p : ℕ)
+    (hp : Nat.Prime p) :
     ∀ i : ℕ, (1 ≤ i ∧  i≤ (p : ℕ) - 1 ) → ((p : ℕ) ∣ Nat.choose (p : ℕ) i) := by
     sorry
 
-theorem lemma_3_4_ii
-    (p : Nat.Primes)
-    (n m : ℕ)
+/- Lemma 3.4 ii) in the MA3K4 notes-/
+theorem choose_prime_pow_mul_modEq
+    (n m p : ℕ)
+    (hp : Nat.Prime p)
     (hcop : Nat.Coprime m p) :
     Nat.ModEq (p : ℕ)
         (Nat.choose ((p : ℕ)^n * m) ((p : ℕ)^n)) m := by
     sorry
 
-/- For a finite group `G`, a subgoup `H`, and a Sylow-p subgroup of `G`, we find that for some `g∈G` we have `H∩gP⋆{-1}->hb-/
-theorem proposition_3_6
-    (p : Nat.Primes)
+/- For a finite group `G`, a subgoup `H`, and a Sylow `p`-subgroup of `G`, we find that for some `g∈G` we have `H∩gPg^{-1}` is a Sylow `p`-subgroup of `H`-/
+theorem exists_sylow_subgroup_eq_comap_conj
+    (p : ℕ)
+    (hp : Nat.Prime p)
     (G : Type*) [Finite G] [Group G]
     (H : Subgroup G)
-    (P : SylowPSubgroup p G) :
-    ∃ g : G, ∃ Q : SylowPSubgroup p H,
+    (P : SylowPSubgroup p hp G) :
+    ∃ g : G, ∃ Q : SylowPSubgroup p hp H,
         Q.toPSubgroup.toSubgroup =
             Subgroup.comap H.subtype
                 (Subgroup.map (MulAut.conj g).toMonoidHom P.toPSubgroup.toSubgroup) := by
