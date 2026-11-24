@@ -7,7 +7,7 @@ import Mathlib.Data.Nat.Factorization.Defs
 import Mathlib.Data.Set.Card
 import Mathlib.Data.Nat.Prime.Defs
 /-!
-# Lemma
+# Lemmas
 
 Lemmas required to prove Sylow's Theorems.
 -/
