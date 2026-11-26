@@ -3,6 +3,7 @@ import Mathlib.Algebra.Group.Subgroup.Defs
 import Mathlib.Algebra.Group.Subgroup.Map
 import Mathlib.Algebra.Group.Action.Defs
 import Mathlib.GroupTheory.GroupAction.Basic
+import Mathlib.GroupTheory.QuotientGroup.Basic
 import Mathlib.Data.Nat.Factorization.Defs
 import Mathlib.Data.Set.Card
 import Mathlib.Data.Nat.Prime.Defs
@@ -13,6 +14,25 @@ Lemmas required to prove Sylow's Theorems.
 -/
 namespace Sylow
 assert_not_exists Sylow
+
+/- Proposition 2.16 i) in the MA3K4 notes-/
+theorem action_quotient_isomorphic_to_range
+    (G X : Type*) [Group G] [MulAction G X] :
+    Nonempty (
+    G ⧸ (MulAction.toPermHom G X).ker ≃* (MulAction.toPermHom G X).range) := by
+    sorry
+
+/- Proposition 2.16 i) in the MA3K4 notes, finiteness result-/
+theorem action_index_dvd_factorial
+    (G X : Type*) [Group G] [MulAction G X] [Finite X] :
+    Nat.card (G ⧸ (MulAction.toPermHom G X).ker) ∣ Nat.factorial (Nat.card X) := by
+    sorry
+
+/- Proposition 2.16 ii) in the MA3K4 notes-/
+theorem action_kernel_normal
+    (G X : Type*) [Group G] [MulAction G X] :
+    (MulAction.toPermHom G X).ker.Normal := by
+    sorry
 
 /- Proposition 2.18 i) in the MA3K4 notes-/
 theorem stabiliser_is_subgroup
