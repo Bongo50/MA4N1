@@ -21,7 +21,7 @@ theorem stabiliser_is_subgroup
     sorry
 
 /- Proposition 2.18 ii) in the MA3K4 notes-/
-theorem stabiliser_eq_ker_toPermHom
+theorem intersection_stabilisers_eq_ker_toPermHom
     (G X : Type*) [Group G] [MulAction G X] :
     (⨅ x: X, MulAction.stabilizer G x) = (MulAction.toPermHom G X).ker := by
     sorry
